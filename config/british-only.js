@@ -1,3 +1,4 @@
+// British English -> American English
 module.exports = {
   "abseil": "rappel",
   "accountancy": "accounting",

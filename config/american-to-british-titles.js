@@ -1,3 +1,4 @@
+// American English -> British English
 module.exports = {
   'mr.': 'mr',
   'mrs.': 'mrs',

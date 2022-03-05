@@ -1,4 +1,5 @@
+// Supported translation languages:
 module.exports = {
-  americanToBritish: "american-to-british",
-  britishToAmerican: "british-to-american",
+  "american-to-british": "american-to-british",
+  "british-to-american": "british-to-american",
 };

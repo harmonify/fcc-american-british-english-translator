@@ -1,3 +1,4 @@
+// American English -> British English
 module.exports = {
   "accessorize": "accessorise",
   "accessorized": "accessorised",
