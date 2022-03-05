@@ -3,9 +3,9 @@ const chaiHttp = require("chai-http");
 const assert = chai.assert;
 const server = require("../server.js");
 
-chai.use(chaiHttp);
+const { Translator } = require("../controllers");
 
-const Translator = require("../components/translator.js");
+chai.use(chaiHttp);
 
 suite("Functional Tests", () => {
   test("Translation with text and locale fields: POST request to /api/translate", function (done) {
