@@ -2,10 +2,9 @@
 
 module.exports = function (err, req, res, next) {
   if (process.env.NODE_ENV !== "production") {
-    console.error(err);
-    // console.error(err.name, {
-    //   error: err.message,
-    // });
+    err.statusCode === 500
+      ? console.error(err)
+      : console.error(`Bad request: ${err.name}("${err.message}")`);
   }
   if (err.statusCode && err.statusCode !== 500) {
     res.status(err.statusCode).json({ error: err.message });
