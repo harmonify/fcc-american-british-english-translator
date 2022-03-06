@@ -49,7 +49,7 @@ suite("Unit Tests", () => {
 
   test("Translate 'Like a high tech Rube Goldberg machine.' to British English", function () {
     const text = "Like a high tech Rube Goldberg machine.";
-    const expected = "Like a high tech Heath Robinson device";
+    const expected = "Like a high tech Heath Robinson device.";
     const locale = locales["american-to-british"];
     const translation = translator.translate(text, locale);
     assert.equal(translation, expected);
@@ -57,7 +57,7 @@ suite("Unit Tests", () => {
 
   test("Translate 'To play hooky means to skip class or work.' to British English", function () {
     const text = "To play hooky means to skip class or work.";
-    const expected = "To bunk off means to skip school or work.";
+    const expected = "To bunk off means to skip class or work.";
     const locale = locales["american-to-british"];
     const translation = translator.translate(text, locale);
     assert.equal(translation, expected);
@@ -170,7 +170,7 @@ suite("Unit Tests", () => {
   test("Highlight translation in 'Mangoes are my favorite fruit.'", function () {
     const text = "Mangoes are my favorite fruit.";
     const expected = "Mangoes are my <span class=\"highlight\">favourite</span> fruit.";
-    const locale = locales["british-to-american"];
+    const locale = locales["american-to-british"];
     const highlighted = translator.translate(text, locale, true);
     assert.equal(highlighted, expected);
   });
@@ -178,7 +178,7 @@ suite("Unit Tests", () => {
   test("Highlight translation in 'I ate yogurt for breakfast.'", function () {
     const text = "I ate yogurt for breakfast.";
     const expected = "I ate <span class=\"highlight\">yoghurt</span> for breakfast.";
-    const locale = locales["british-to-american"];
+    const locale = locales["american-to-british"];
     const highlighted = translator.translate(text, locale, true);
     assert.equal(highlighted, expected);
   });
