@@ -36,8 +36,12 @@ class Translator {
     for (let index = 0; index < words.length; index++) {
       let isTranslated = false;
       let translatedWords = "";
+      // while the word is not translated and the word is not the last word
+      // join them with the next word in the array and translate it
+      // if there are no more words and the words are not translated,
+      // push only the current word (words[index]) to the result array.
       while (counter <= words.length - index && !isTranslated) {
-        const wordsToTranslate = words.slice(index, index + counter).join(" ");
+        const wordsToTranslate = words.slice(index, index + counter).join("");
         translatedWords = this.translateWord(wordsToTranslate, locale);
         if (translatedWords !== wordsToTranslate) {
           isTranslated = true;
@@ -58,8 +62,7 @@ class Translator {
       // reset the counter
       counter = 1;
     }
-    console.log(words);
-    this._logTranslated(text, result);
+    this._logTranslated(text, words, result, result.join(""));
     return result.join("");
   }
 
@@ -141,10 +144,11 @@ class Translator {
     return `<span class="highlight">${word}</span>`;
   }
 
-  _logTranslated(text, result) {
+  _logTranslated(text, words, resultArr, result) {
     console.log("text: ", text);
-    console.log("result: ", result.join(""));
-    console.log("resultArr: ", result);
+    console.log("result : ", result);
+    console.log("text array: ", words);
+    console.log("result array: ", resultArr);
   }
 
   _logAmericanToBritish(word) {
