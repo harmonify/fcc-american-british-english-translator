@@ -32,26 +32,25 @@ class Translator {
       /([a-zA-Z]{2}\.)|(\d+[\:\.]\d+)|([a-zA-Z0-9]+)|([^a-zA-Z0-9]+)/g;
     const words = [...text.matchAll(inputRe)].map((word) => word[0]);
     const result = [];
-    let counter = 1;
+    let counter = words.length;
     for (let index = 0; index < words.length; index++) {
       let isTranslated = false;
       let translatedWords = "";
-      // while the word is not translated and the word is not the last word
-      // join them with the next word in the array and translate it
-      // if there are no more words and the words are not translated,
-      // push only the current word (words[index]) to the result array.
-      while (counter <= words.length - index && !isTranslated) {
+      // while the word is not translated and the counter is greater than 0
+      // translate the word from the longest sequence, slice the word shorter
+      // if they are not translated.
+      while (counter > 0 && !isTranslated) {
         const wordsToTranslate = words.slice(index, index + counter).join("");
         translatedWords = this.translateWord(wordsToTranslate, locale);
         if (translatedWords !== wordsToTranslate) {
           isTranslated = true;
         }
-        counter += 1;
+        counter -= 1;
       }
       // if the word is translated
       if (isTranslated) {
         // jump the iteration and push the translated word
-        index += counter - 2;
+        index += counter;
         result.push(
           highlight ? this.highlight(translatedWords) : translatedWords
         );
@@ -60,9 +59,9 @@ class Translator {
         result.push(words[index]);
       }
       // reset the counter
-      counter = 1;
+      counter = words.length - index;
     }
-    this._logTranslated(text, words, result, result.join(""));
+    // this._logTranslated(text, words, result, result.join(""));
     return result.join("");
   }
 
@@ -114,7 +113,7 @@ class Translator {
   }
 
   translateBritishToAmerican(word) {
-    this._logBritishToAmerican(word);
+    // this._logBritishToAmerican(word);
     let result;
     const wordLowercased = word.toLowerCase();
 
