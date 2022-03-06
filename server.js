@@ -19,10 +19,6 @@ const runner = require("./test-runner");
 const { apiRoutes, fccTestingRoutes } = require("./routes");
 const { errorHandler, loggerDev, notFoundHandler } = require("./middlewares");
 
-const express = require("express");
-const bodyParser = require("body-parser");
-const cors = require("cors");
-
 const app = express();
 
 app.use(cors({ origin: "*" })); //For FCC testing purposes only
